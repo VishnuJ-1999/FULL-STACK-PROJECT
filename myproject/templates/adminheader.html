@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <div class="menu-section">
+
+        <ul class="nav2">
+            <li>
+                <a href="{% url 'adminhomeurl' %}">Home</a>
+            </li>
+            <li>
+                <a href="{% url 'adminpasswordurl' %}">Change password</a>
+            </li>
+            
+            <li>
+                <a href="{% url 'displayurl' %}">Display Registration </a>
+            </li>
+            <li>
+                <a href="{% url 'loginurl' %}">Logout</a>
+            </li>
+
+           
+        </ul>
+    </div>

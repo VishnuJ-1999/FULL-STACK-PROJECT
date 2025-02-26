@@ -1,0 +1,31 @@
+{% include 'userhome.html' %}
+
+<div class="heading">
+    <h1>Update Your Details Here</h1>
+</div>
+
+<div class="contact-form">
+    <form action="{% url 'updateurl' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{r.id}}"/>
+        
+        <label>Name:</label>
+        <input type="text" name="name" value="{{r.name}}" placeholder="Enter Your Name" required>
+        
+        <label>Address:</label>
+        <textarea name='address' rows='4' cols='40' placeholder="Enter Your Address">{{r.address}}</textarea>
+        
+        <label>Phone No:</label>
+        <input type="text" name="phone" value="{{r.phone}}" placeholder="Enter Your Phone Number" required>
+        
+        <label>Email:</label>
+        <input type="email" name="email" readonly value="{{r.email}}" placeholder="Enter Your Email Address" required>
+        
+        <button type="submit">Update</button>    
+    </form>
+</div>
+
+</body>
+</html>
+
+

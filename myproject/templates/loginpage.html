@@ -1,0 +1,19 @@
+{% include 'header.html'%}
+    
+
+    <div class="login">
+    <h2>Login</h2>
+    <form method="POST" action="{% url 'loginurl' %}"> 
+        {% csrf_token %}
+        <label for="username">Username:</label>
+         <input type="text" id="email" name="email"  required>
+        <br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <button type="submit">Login</button>
+    </form>
+    </div>
+    
+</body> 
+</html>

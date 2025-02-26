@@ -1,0 +1,16 @@
+{% include 'userhome.html'%}
+<body>
+
+    <div class="login">
+    <h2>Add your photo</h2>
+    <form method="POST" enctype="multipart/form-data"><br> 
+        {% csrf_token %}
+        <label for="photo">Photo</label>
+        <input type="file" id="photo" name="photo" placeholder="upload your photo"><br>
+        <br><br>
+        <input type="submit" value="upload">
+    </form>
+    </div>
+    
+</body> 
+</html>

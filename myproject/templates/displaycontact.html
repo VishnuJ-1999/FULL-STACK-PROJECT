@@ -1,0 +1,36 @@
+{% load static %}
+{% include 'userhome.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    {% if r %}
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td>Phone Number</td>
+            <td>Email</td>
+            <td>Action</td>
+            <td>Action</td>
+        </tr>
+    {% for i in r %}
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.phone }}</td>
+            <td>{{ i.email }}</td>
+            <td><a href="{% url 'deletecontacturl' i.id %}">Delete</a></td>
+            <td><a href="{% url 'editcontacturl' i.id %}">Edit</a></td>
+          
+        </tr>
+    {% endfor %}
+    </table>
+    {% else %}
+    <h1>No record to display</h1>
+    {% endif %}
+</body>
+</html>

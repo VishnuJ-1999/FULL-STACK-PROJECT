@@ -1,0 +1,30 @@
+{% include 'adminheader.html' %}
+
+
+    {% if r %}
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td>Address</td>
+            <td>Phone Number</td>
+            <td>Email</td>
+            <td>Password</td>
+            <td>Action</td>
+        </tr>
+    {% for i in r %}
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{i.address}}</td>
+            <td>{{ i.phone }}</td>
+            <td>{{ i.email }}</td>
+            <td>{{i.password}}</td>
+            <td><a href="{% url 'deleteurl' i.id %}">Delete</a></td>
+            <td><a href="{% url 'editurl' i.id %}">Edit</td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% else %}
+    <h1>No record to display</h1>
+    {% endif %}
+</body>
+</html>

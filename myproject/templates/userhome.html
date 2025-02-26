@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <div class="menu-section">
+
+        <ul class="nav2">
+            <li>
+                <a href="{% url 'userhomepageurl' %}">Home</a>
+            </li>
+            <li>
+                <a href="{% url 'addcontacturl' %}">Add Contact</a>
+            </li>
+            <li>
+                <a href="{% url 'searchnameurl' %}">Search</a>
+            </li>
+           
+            <li>
+                <a href="{% url 'galleryurl' %}">Gallery</a>
+            </li>
+            <li>
+                <a href="{% url 'viewgalleryurl' %}">ViewGallery</a>
+            </li>
+           
+            <li>
+                <a href="{% url 'displaydetailsurl' %}">My contacts</a>
+            </li>
+            
+            <li>
+                <a href="{% url 'loginurl' %}">Logout</a>
+            </li>
+            <li>
+                <a href="{% url 'editprofileurl' %}">Edit Profile</a>
+            </li>
+            <li>
+                <a href="{% url 'updatepasswordurl' %}">Update Password</a>
+            </li>
+        </ul>
+
+<P>
+
+</P>
+ <div class="contact-form-section">
+        <h5>Welcome</h5><p>{{usr}}</p>
+ </div>
+ </div>
+
+ {% if m %}
+<script>
+    alert('{{m}}')
+</script>
+{% endif %}
+
+
+</body>
+</html>
+

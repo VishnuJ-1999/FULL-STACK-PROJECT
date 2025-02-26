@@ -1,0 +1,42 @@
+{% include 'userhome.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Name</title>
+</head>
+<body>
+
+    <h2>Search for a Name</h2>
+
+    <form method="POST" action="{% url 'searchnameurl' %}">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Enter Name" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if record %}
+        <h2>Search Results:</h2>
+        <table border="1">
+            <tr>
+                <th>Full Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+            </tr>
+            {% for record in record %}
+            <tr>
+                <td>{{ record.name }}</td>
+                <td>{{ record.phone }}</td>
+                <td>{{ record.email }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+</body>
+</html>
