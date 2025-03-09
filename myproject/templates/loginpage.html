@@ -1,5 +1,12 @@
 {% include 'header.html'%}
     
+{% if messages %}
+    {% for message in messages %}
+        <script>
+            alert("{{ message }}");
+        </script>
+    {% endfor %}
+{% endif %}
 
     <div class="login">
     <h2>Login</h2>
@@ -12,6 +19,8 @@
         <input type="password" id="password" name="password" required>
         <br><br>
         <button type="submit">Login</button>
+
+
     </form>
     </div>
     

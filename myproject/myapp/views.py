@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import *
+from .models import MyTable 
+from django.contrib import messages  
 
 # Create your views here.
 
@@ -20,28 +22,30 @@ def homepage(request):
 #     return render (request,'loginpage.html')
     
 
+
 def loginpage(request):
-    if request.method=='POST':
-       
-        email=request.POST.get("email")
-        password=request.POST.get("password")
+    if request.method == 'POST':
+        email = request.POST.get("email")
+        password = request.POST.get("password")
         
-        record=MyTable.objects.get(email=email,password=password)
+        record = MyTable.objects.filter(email=email, password=password).first()
         
-        # return HttpResponse(record)
-        if record :
-            request.session['userid']=record.id
-            request.session['username']=email
-            if(record.email=='admin@gmail.com'):
-                record=MyTable.objects.all()
-                return render (request,'display.html',{"r":record})
+        if record:
+            request.session['userid'] = record.id
+            request.session['username'] = email
+            
+            if record.email == 'admin@gmail.com':
+                all_records = MyTable.objects.all()
+                return render(request, 'display.html', {"r": all_records})
             else:
-                print(request.session['username'])
-                usr=request.session['username']
-                return render(request,'userhome.html',{'usr':usr})
+                usr = request.session['username']
+                return render(request, 'userhome.html', {'usr': usr})
         else:
-            return HttpResponse("invalid user")
-    return render(request,'loginpage.html')
+            messages.error(request, "Invalid user. Please check your email and password.") 
+            return redirect('loginurl')
+    return render(request, 'loginpage.html')
+
+
 
 
 def adminheader(request):
